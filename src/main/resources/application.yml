@@ -1,0 +1,27 @@
+server:
+  port: 9001
+
+---
+spring:
+  profiles: dev
+  data:
+    mongodb.uri: mongodb://localhost:27017/easy_park
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+
+---
+spring:
+  profiles: prod
+  data:
+    mongodb:
+      authentication-database: admin
+      database: easy_park
+      host: localhost
+      password: <password>
+      port: 27017
+      username: <user>
+
