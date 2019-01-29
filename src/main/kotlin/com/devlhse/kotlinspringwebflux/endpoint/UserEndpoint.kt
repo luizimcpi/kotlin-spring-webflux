@@ -22,7 +22,7 @@ class UserEndpoint(private val userService: UserService) {
     @PostMapping(USERS_V1_CONTEXT_PATH)
     @ResponseStatus(HttpStatus.CREATED)
     fun createUser(@RequestBody userRequest: UserRequest): Mono<UserResponse> {
-        LOG.info("POST -> UserRequest has been received with values: $userRequest.toString()")
+        LOG.info("POST -> UserRequest has been received with values: $userRequest")
 
         return userService.create(toModel(userRequest))
                 .map { toResponse(it) }

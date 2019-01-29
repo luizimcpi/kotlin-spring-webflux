@@ -24,5 +24,5 @@ data class UserDocument(
 )
 
 fun toResponse(user: User): UserResponse {
-    return UserResponse(user.id, user.name, user.email)
+    return UserResponse(user.id, user.name, user.email, user.created_at, user.updated_at)
 }

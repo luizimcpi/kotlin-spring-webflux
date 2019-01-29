@@ -1,5 +1,7 @@
 package com.devlhse.kotlinspringwebflux.service.impl
 
+import com.devlhse.kotlinspringwebflux.exception.EmailAlreadyExistsException
+import com.devlhse.kotlinspringwebflux.exception.NameAlreadyExistsException
 import com.devlhse.kotlinspringwebflux.model.User
 import com.devlhse.kotlinspringwebflux.model.UserDocument
 import com.devlhse.kotlinspringwebflux.repository.UserRepository
@@ -19,10 +21,10 @@ class UserServiceImpl(private val userRepository: UserRepository) : UserService 
 
     private fun validateUser(user: User): Mono<User> {
         val emailExists = userRepository.findByEmail(user.email)
-                .flatMap { Mono.error<User>(RuntimeException("Email já cadastrado")) }
+                .flatMap { Mono.error<User>(EmailAlreadyExistsException("Email já cadastrado")) }
 
         val nameExists = userRepository.findByName(user.name)
-                .flatMap { Mono.error<User>(RuntimeException("Nome já cadastrado")) }
+                .flatMap { Mono.error<User>(NameAlreadyExistsException("Nome já cadastrado")) }
 
         return Flux.merge(emailExists, nameExists)
                 .then(Mono.just(user))

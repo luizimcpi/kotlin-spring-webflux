@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 
 @Configuration
 class JacksonConfig {
@@ -14,6 +15,7 @@ class JacksonConfig {
     fun mapper(): ObjectMapper {
         val mapper = ObjectMapper()
         mapper.registerModule(KotlinModule())
+        mapper.registerModule(JavaTimeModule())
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
         mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
         return mapper
