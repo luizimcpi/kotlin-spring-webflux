@@ -8,4 +8,6 @@ import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRep
 @EnableReactiveMongoRepositories
 class KotlinSpringWebfluxApplication
 
-fun main(args: Array<String>) { runApplication<KotlinSpringWebfluxApplication>(*args) }
+fun main(args: Array<String>) {
+    runApplication<KotlinSpringWebfluxApplication>(*args)
+}
