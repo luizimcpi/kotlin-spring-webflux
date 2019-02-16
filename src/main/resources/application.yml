@@ -1,5 +1,12 @@
-server:
-  port: 9001
+data:
+  #mongodb docker configuration
+  mongodb.uri: mongodb://database:27017/easy_park
+  mongo.repositories.enabled: true
+
+api:
+  weather:
+    url: http://api.openweathermap.org/data/2.5/weather
+    key: 130aab12fceacb0e3c68009f1e07b0ea
 
 ---
 spring:
@@ -12,6 +19,10 @@ logging:
     org:
       springframework:
         web: DEBUG
+api:
+  weather:
+    url: http://api.openweathermap.org/data/2.5/weather
+    key: 130aab12fceacb0e3c68009f1e07b0ea
 
 ---
 spring:
@@ -25,3 +36,16 @@ spring:
       port: 27017
       username: <user>
 
+api:
+  weather:
+    url: http://api.openweathermap.org/data/2.5/weather
+    key: 130aab12fceacb0e3c68009f1e07b0ea
+
+---
+spring:
+  profiles: test
+
+api:
+  weather:
+    url: http://api.openweathermap.org/data/2.5/weather
+    key: 130aab12fceacb0e3c68009f1e07b0ea

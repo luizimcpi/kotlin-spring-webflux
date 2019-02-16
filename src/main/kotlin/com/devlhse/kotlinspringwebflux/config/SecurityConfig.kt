@@ -14,7 +14,7 @@ class SecurityConfig {
                 .csrf().disable()
                 .formLogin().disable()
                 .authorizeExchange()
-                .pathMatchers("/actuator/**", "/users/**").permitAll()
+                .pathMatchers("/actuator/**", "/users/**", "/weather/**").permitAll()
                 .anyExchange().authenticated()
                 .and().build()
     }

@@ -17,7 +17,7 @@ import java.util.logging.Logger
 @RestController
 class UserEndpoint(private val userService: UserService) {
 
-    private val LOG = Logger.getLogger(UserEndpoint::class.java.getName())
+    private val LOG = Logger.getLogger(UserEndpoint::class.java.name)
 
     @PostMapping(USERS_V1_CONTEXT_PATH)
     @ResponseStatus(HttpStatus.CREATED)
